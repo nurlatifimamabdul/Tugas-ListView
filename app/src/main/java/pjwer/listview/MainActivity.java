@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -66,6 +67,24 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
+
+        // mengaktifkan fungsi button simpan
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //something happen if user click this button
+                String title=editTextInput.getText().toString();
+                // dilakukan check untuk memastikan bahwa user telah menulis judul buku
+                if(!title.isEmpty()){
+                    // menambahkan judul buku kedalam listOfBook
+                    listOfBook.add(title);
+                    // meng-update listview
+                    adapter.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(getApplicationContext(),"judul buku waji diisi",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
     @Override
