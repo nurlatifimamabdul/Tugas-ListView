@@ -71,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
         });
         return super.onOptionsItemSelected(item);
     }
+    
     // mmbuat alert dialog untuk fungsi hapus buku
     private void showDeleteDialog(final String bookTitle){
         AlertDialog.Builder deleteDialog=new AlertDialog.Builder(this);
