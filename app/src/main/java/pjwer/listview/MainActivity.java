@@ -9,6 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+
 
 
 public class MainActivity extends ActionBarActivity {
@@ -41,6 +45,26 @@ public class MainActivity extends ActionBarActivity {
         //meng-inisiasi arrayadapter
         adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listOfBook);
         listViewBook.setAdapter(adapter);
+
+        //mengaktifkan fungsi onItemClickListener dan onItemLongClickListener
+        listViewBook.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //something happen
+                String clickedItem= (String) parent.getAdapter().getItem(position);
+                Log.d("booklogger",clickedItem);
+            }
+        });
+
+        listViewBook.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                //something happen
+                String longClickedItem= (String) parent.getAdapter().getItem(position);
+                Log.d("booklogger",longClickedItem);
+                return false;
+            }
+        });
     }
 
 
